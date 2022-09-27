@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<title>HeatMan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: sans-serif;
+  }
+#hetman {
+    position: relative;
+    left: 10px;
+}
+</style>
+
+</head>
+
+<body>
+<img src="Resources/spawn.png" id="hetman">
+<script>
+let i = 1;
+let timer = 0
+let rngDelay = 0
+var phase = 0;
+function moveHeat(i) {
+
+  if (phase == 0 ) {
+  document.getElementById("hetman").style.top = `${i * 2}px`;
+  timer += 1
+  if (timer == 50) {
+    phase = 1
+    timer = 0
+   }
+  }
+  if (phase == 1) {
+    document.getElementById("hetman").src = "Resources/stand.png"
+    timer += 1;
+    if (timer == 20) {
+      phase = 2;
+      timer = 0;
+      document.getElementById("hetman").src = "Resources/pose1.png";
+    }
+  }
+  if (phase == 2) {
+    document.getElementById("hetman").src = "Resources/pose1.png"
+    timer += 1;
+    if (timer == 20) {
+      phase = 3;
+      timer = 0;
+      document.getElementById("hetman").src = "Resources/pose2.png";
+    }
+  }
+  if (phase == 3) {
+    document.getElementById("hetman").src = "Resources/pose2.png"
+    timer += 1;
+    if (timer == 20) {
+      phase = 4;
+      timer = 0;
+      document.getElementById("hetman").src = "Resources/pose4.png";
+    }
+  }
+  if (phase == 4) {
+    document.getElementById("hetman").src = "Resources/pose4.png"
+    timer += 1;
+    if (timer == 20) {
+      phase = 5;
+      timer = 0;
+      document.getElementById("hetman").src = "Resources/pose5.png";
+    }
+  }
+  if (phase == 5) {
+    document.getElementById("hetman").src = "Resources/stand.png"
+    timer += 1;
+    if (timer == 100) {
+      phase = 6;
+      timer = 0;
+      document.getElementById("hetman").src = "Resources/shoot1.png";
+    }
+  }
+  if (phase == 6) {
+    timer += 1;
+    if (timer == 30) {
+      phase = 6;
+      timer = 0;
+      document.getElementById("hetman").src = "Resources/shoot2.png";
+    }
+  }
+}
+
+
+var heatInterval = setInterval(function() { 
+  moveHeat(i);
+  i++;
+}, 10);
+
+</script>
+
+</body>
+
+</html>
